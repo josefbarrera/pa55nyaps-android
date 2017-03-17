@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">Pa55nyaps</string>
+    <string name="app_name">pa55 nyaps</string>
+    <string name="see_preferences">Preferences</string>
+    <string name="edit_settings_databases">Edit</string>
+    <string name="scan_from_qr_code">Password from QR code</string>
+    <string name="start_screen_no_settings_database">Press the + button on the bottom left corner to create a new password settings database.</string>
+    <string name="start_screen_title">Password Settings Databases</string>
+    <string name="add_password_settings_database">Add a new password settings database</string>
 </resources>
