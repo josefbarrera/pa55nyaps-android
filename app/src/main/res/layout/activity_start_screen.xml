@@ -11,25 +11,16 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.pa55.pa55nyaps.StartScreen">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/primaryToolbar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:gravity="left|center_vertical"
-        android:text="@string/see_preferences" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:gravity="right|center_vertical"
-        android:text="@string/edit_settings_databases" />
+        android:layout_centerHorizontal="true"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ToolbarTheme" />
 
     <TextView
         android:id="@+id/textView"
@@ -37,19 +28,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/button"
-        android:layout_marginTop="26dp"
-        android:text="@string/start_screen_title" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/scan_from_qr_code"
-        android:gravity="right|center_vertical"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_below="@+id/primaryToolbar"
+        android:layout_marginTop="14dp"
+        android:paddingEnd="@dimen/activity_horizontal_padding"
+        android:paddingLeft="@dimen/activity_horizontal_padding"
+        android:paddingRight="@dimen/activity_horizontal_padding"
+        android:paddingStart="@dimen/activity_horizontal_padding"
+        android:text="@string/start_screen_title"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
     <TextView
         android:id="@+id/textView2"
@@ -58,17 +44,59 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textView"
-        android:layout_marginTop="16dp"
-        android:text="@string/start_screen_no_settings_database" />
+        android:layout_marginTop="12dp"
+        android:paddingEnd="@dimen/activity_horizontal_padding"
+        android:paddingLeft="@dimen/activity_horizontal_padding"
+        android:paddingRight="@dimen/activity_horizontal_padding"
+        android:paddingStart="@dimen/activity_horizontal_padding"
+        android:text="@string/start_screen_no_settings_database"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="wrap_content"
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/secondaryToolbar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/ic_input_add"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/button4" />
+        android:background="@color/toolbarBackground"
+        android:elevation="4dp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/SecondaryToolbar">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="@android:color/transparent">
+
+            <ImageButton
+                android:id="@+id/addDatabase"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignTop="@+id/scanQrCode"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/add_password_settings_database"
+                app:srcCompat="@android:drawable/ic_input_add" />
+
+            <Button
+                android:id="@+id/scanQrCode"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="@dimen/activity_horizontal_padding"
+                android:layout_marginRight="@dimen/activity_horizontal_padding"
+                android:background="@android:color/transparent"
+                android:text="@string/scan_from_qr_code" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
 
 </RelativeLayout>

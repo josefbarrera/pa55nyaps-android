@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/edit_settings_databases"
+        android:icon="@drawable/ic_edit_blue_24dp"
+        android:title="@string/edit_settings_databases"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/preferences"
+        android:icon="@drawable/ic_settings_blue_24dp"
+        android:title="@string/see_preferences"
+        app:showAsAction="always" />
+</menu>

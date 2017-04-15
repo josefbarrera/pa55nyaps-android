@@ -6,9 +6,16 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="windowBackground">@color/windowBackground</item>
         <item name="buttonStyle">@style/AppTheme.ButtonStyle</item>
         <item name="imageButtonStyle">@style/AppTheme.ImageButtonStyle</item>
+        <item name="android:background">@color/windowBackground</item>
+    </style>
+
+    <style name="ToolbarTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:actionMenuTextColor">@color/colorButtonText</item>
+        <item name="colorPrimary">@color/toolbarBackground</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:background">@color/toolbarBackground</item>
     </style>
 
     <style name="AppTheme.ButtonStyle" parent="@style/Widget.AppCompat.Button.Borderless">
@@ -17,6 +24,11 @@
 
     <style name="AppTheme.ImageButtonStyle" parent="@style/Widget.AppCompat.ImageButton">
         <item name="android:background">?android:selectableItemBackground</item>
+        <item name="android:tint">@color/colorButtonText</item>
+    </style>
+
+    <style name="SecondaryToolbar" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textColor">@color/colorButtonText</item>
         <item name="android:tint">@color/colorButtonText</item>
     </style>
 
