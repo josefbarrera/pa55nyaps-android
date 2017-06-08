@@ -1,4 +1,4 @@
-package com.pa55.pa55nyaps;
+package com.pa55nyaps.pa55nyaps;
 
 import org.junit.Test;
 

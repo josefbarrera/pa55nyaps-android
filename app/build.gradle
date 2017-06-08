@@ -4,7 +4,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
-        applicationId "com.pa55.pa55nyaps"
+        applicationId "prototype.pa55nyaps.pa55nyaps"
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
@@ -29,4 +29,5 @@ dependencies {
     compile 'com.android.support:design:25.3.1'
     testCompile 'junit:junit:4.12'
     compile files('libs/gson-2.3.1.jar')
+    compile files('libs/bcprov-jdk15on-151.jar')
 }

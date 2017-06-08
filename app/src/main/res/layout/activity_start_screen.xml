@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.pa55.pa55nyaps.StartScreen">
+    tools:context="com.pa55nyaps.pa55nyaps.com.pa55.StartScreen">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/primaryToolbar"

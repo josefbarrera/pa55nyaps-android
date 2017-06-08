@@ -1,4 +1,4 @@
-package com.pa55.pa55nyaps;
+package prototype.pa55nyaps.gui;
 
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +8,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+
+import com.pa55nyaps.pa55nyaps.R;
 
 public class StartScreen extends AppCompatActivity {
 
