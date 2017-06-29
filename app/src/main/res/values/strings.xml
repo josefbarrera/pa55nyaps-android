@@ -6,6 +6,7 @@
     <string name="start_screen_no_settings_database">Press the + button on the bottom left corner to create a new password settings database.</string>
     <string name="start_screen_title">Password Settings Databases</string>
     <string name="add_password_settings_database">Add a new password settings database</string>
+    <string name="databases_directory">pa55-dbs</string>
 
     <!-- App common labels -->
     <string name="password_label">Password</string>
