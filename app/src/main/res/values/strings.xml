@@ -16,4 +16,11 @@
     <!-- Password Settings Databases listing -->
     <string name="new_password_prompt">Enter password to protect the new password settings database.</string>
     <string name="new_password_prompt_title">Create new password settings database</string>
+    <string name="database_listing_footer">
+        These protected (encrypted) password settings databases are locally stored on this device.
+        Once you open a password settings database, you can export it (encrypted) to external apps
+        such as message, email or a cloud storage service. Press the + button on the bottom left
+        corner to create a new password settings database.
+    </string>
+    <string name="delete_database">Delete password settings database</string>
 </resources>
