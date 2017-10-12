@@ -3,14 +3,14 @@ package prototype.pa55nyaps.gui;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.pa55nyaps.pa55nyaps.R;
@@ -85,7 +85,9 @@ public class StartScreen extends AppCompatActivity
         }
         files = databases_directory.listFiles();
         TextView helpText = (TextView) findViewById(R.id.createDbHelpText);
-        ListView filesListing = (ListView) findViewById(R.id.filesListing);
+        RecyclerView filesListing = (RecyclerView) findViewById(R.id.filesListing);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        filesListing.setLayoutManager(layoutManager);
 
         Log.i("Number of files", "There are currently " + files.length + " files");
         if (files.length == 0) {
@@ -95,17 +97,13 @@ public class StartScreen extends AppCompatActivity
             return;
         }
 
-        // Set the file listing footer
-        View footerView = getLayoutInflater().inflate(R.layout.file_listing_footer_layout, null, false);
-        filesListing.addFooterView(footerView);
-
         // Hide the help text
         helpText.setVisibility(View.GONE);
 
         ArrayList<HashMap<String, String>> filesList = new ArrayList<>();
         for (File file : files) {
             Date unformattedLastModified = new Date(file.lastModified());
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
             String lastModified= "Updated: " + formatter.format(unformattedLastModified);
 
             HashMap<String, String> fileDetails = new HashMap<>();
@@ -114,12 +112,18 @@ public class StartScreen extends AppCompatActivity
             filesList.add(fileDetails);
         }
 
-        String[] from = {"fileName", "lastModified"};
-        int[] to = {R.id.fileName, R.id.lastModified};
-
         // Add the file items to the list view and display it
-        filesListing.setAdapter(new SimpleAdapter(StartScreen.this, filesList, R.layout.file_list_layout, from, to));
+        FileListingAdapter adapter = new FileListingAdapter(filesList);
+        filesListing.setAdapter(adapter);
         filesListing.setVisibility(View.VISIBLE);
+
+        // Handle clicks on the filesListing items
+//        filesListing.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                // was text clicked or the delete button? what's the right way of doing this?
+//            }
+//        });
         // TODO call renderFileListing when a database is deleted
 
     }

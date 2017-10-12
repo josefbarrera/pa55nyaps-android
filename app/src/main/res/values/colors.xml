@@ -7,4 +7,5 @@
     <color name="colorButtonText">#3D61F7</color>
     <color name="toolbarBackground">#F5F4F7</color>
     <color name="darkText">#222222</color>
+    <color name="warning">#E60000</color>
 </resources>

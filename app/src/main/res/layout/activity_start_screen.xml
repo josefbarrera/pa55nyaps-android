@@ -57,9 +57,9 @@
         android:text="@string/start_screen_no_settings_database"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-    <ListView
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/filesListing"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/secondaryToolbar"
         android:layout_below="@+id/createDbHelpText" />

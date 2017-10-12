@@ -3,9 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:background="@drawable/file_entry_border">
 
     <LinearLayout
+        android:id="@+id/fileEntry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -43,9 +45,11 @@
         android:id="@+id/delete_file"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:background="@color/colorAccent"
+        android:contentDescription="@string/delete_database"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
-        android:contentDescription="@string/delete_database"
-        android:src="@drawable/ic_delete_database" />
+        android:src="@drawable/ic_delete_black_30dp"
+        android:tint="@color/warning" />
 
 </LinearLayout>

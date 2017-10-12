@@ -26,6 +26,7 @@ import java.text.DateFormat;
 import prototype.pa55nyaps.crypto.AESCryptosystem;
 import prototype.pa55nyaps.dataobjects.Ciphertext;
 import prototype.pa55nyaps.dataobjects.PasswordDatabase;
+import prototype.pa55nyaps.gui.model.PasswordDatabaseFile;
 
 /**
  */
@@ -60,15 +61,16 @@ public class CreateDatabaseFragment extends DialogFragment {
                 .setPositiveButton(R.string.continue_label, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        String db_directory_name = getContext().getFilesDir() + File.separator +
-                                getResources().getString(R.string.databases_directory);
                         String filename = "db" + (System.currentTimeMillis()/1000L) + ".pa55";
-                        File file = new File(db_directory_name, filename);
-                        PasswordDatabase database = new PasswordDatabase();
                         String password = userInput.getText().toString();
                         // TODO: do we need to check if password is not empty?
                         // create the password settings database
-                        saveDatabaseToFile(database, file, password);
+                        PasswordDatabaseFile database_file = new PasswordDatabaseFile(
+                                filename,
+                                password,
+                                getContext()
+                        );
+                        database_file.save();
                         mListener.onDialogPositiveClick(CreateDatabaseFragment.this);
                     }
                 })
@@ -91,25 +93,6 @@ public class CreateDatabaseFragment extends DialogFragment {
             mListener = (DialogListener) activity;
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString() + " must implement DialogListener");
-        }
-    }
-
-    public void saveDatabaseToFile(PasswordDatabase database, File file, String password) {
-        PrintStream pos;
-        try {
-            String json = gson.toJson(database);
-            if (json == null) {
-                throw new JSONException("The password database cannot be serialized.");
-            }
-            Ciphertext ciphertext = AESCryptosystem.getInstance().encryptWithHmac(json, password);
-            String jsoncipher = gson.toJson(ciphertext);
-            pos = new PrintStream(file.getAbsolutePath());
-            pos.print(jsoncipher);
-            pos.flush();
-            pos.close();
-        } catch (Exception ex) {
-            ex.printStackTrace(System.err);
-            Log.e("Exception", ex.getMessage());
         }
     }
 }
