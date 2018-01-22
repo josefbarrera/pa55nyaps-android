@@ -1,5 +1,10 @@
 package prototype.pa55nyaps.gui;
 
+import android.content.Context;
+import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,7 +20,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Created by jose on 10/4/17.
+ * Created by Jose Barrera on 10/4/17.
  */
 
 public class FileListingAdapter extends RecyclerView.Adapter<FileListingAdapter.ViewHolder> {
@@ -34,8 +39,9 @@ public class FileListingAdapter extends RecyclerView.Adapter<FileListingAdapter.
         public TextView fileName;
         public TextView lastModified;
         public ImageButton deleteEntry;
+        public int position;
 
-        public NormalViewHolder(LinearLayout v) {
+        public NormalViewHolder(LinearLayout v, final Context context) {
             super(v);
             fileEntry = (LinearLayout) v.findViewById(R.id.fileEntry);
             fileName = (TextView) fileEntry.findViewById(R.id.fileName);
@@ -52,10 +58,19 @@ public class FileListingAdapter extends RecyclerView.Adapter<FileListingAdapter.
             deleteEntry.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.i("DeleteEntry", "Delete entry clicked");
+                    Bundle args = new Bundle();
+                    String fileNameString = fileName.getText().toString();
+                    args.putString("fileName", fileNameString);
+                    args.putInt("position", position);
+
+                    FragmentManager manager = ((AppCompatActivity) context).getSupportFragmentManager();
+                    DialogFragment dialog = new DeleteDatabaseFragment();
+                    dialog.setArguments(args);
+                    dialog.show(manager, "DeleteDatabaseFragment");
                 }
             });
         }
+
     }
 
     public static class FooterViewHolder extends FileListingAdapter.ViewHolder {
@@ -76,15 +91,17 @@ public class FileListingAdapter extends RecyclerView.Adapter<FileListingAdapter.
         ViewHolder vh;
 
         if (viewType == FOOTER_VIEW) {
-            v = (LinearLayout) LayoutInflater.from(parent.getContext())
+            Context context = parent.getContext();
+            v = (LinearLayout) LayoutInflater.from(context)
                     .inflate(R.layout.file_listing_footer_layout, parent, false);
             vh = new FooterViewHolder(v);
         } else {
-            v = (LinearLayout) LayoutInflater.from(parent.getContext())
+            Context context = parent.getContext();
+            v = (LinearLayout) LayoutInflater.from(context)
                     .inflate(R.layout.file_list_layout, parent, false);
             // set the view's size, margins, padding and layout parameters
 
-            vh = new NormalViewHolder(v);
+            vh = new NormalViewHolder(v, context);
         }
         return vh;
     }
@@ -101,6 +118,7 @@ public class FileListingAdapter extends RecyclerView.Adapter<FileListingAdapter.
                 NormalViewHolder nvHolder = (NormalViewHolder) holder;
                 nvHolder.fileName.setText(fileDetails.get("fileName"));
                 nvHolder.lastModified.setText(fileDetails.get("lastModified"));
+                nvHolder.position = position;
             }
         } catch (Exception e) {
             e.printStackTrace();

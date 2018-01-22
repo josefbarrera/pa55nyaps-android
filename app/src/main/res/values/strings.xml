@@ -12,6 +12,7 @@
     <string name="password_label">Password</string>
     <string name="continue_label">Continue</string>
     <string name="cancel_label">Cancel</string>
+    <string name="ok_label">Ok</string>
 
     <!-- Password Settings Databases listing -->
     <string name="new_password_prompt">Enter password to protect the new password settings database.</string>
@@ -23,4 +24,7 @@
         corner to create a new password settings database.
     </string>
     <string name="delete_database">Delete password settings database</string>
+
+    <string name="confirm_delete_database_title">Delete password settings database?</string>
+    <string name="confirm_delete_database">Please confirm that you want to delete password settings database %1$s. This action cannot be undone</string>
 </resources>

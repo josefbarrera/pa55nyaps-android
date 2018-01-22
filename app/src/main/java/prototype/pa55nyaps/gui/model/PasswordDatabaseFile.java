@@ -74,6 +74,6 @@ public class PasswordDatabaseFile {
 
     public boolean delete()
     {
-        return false;
+        return this.file.delete();
     }
 }

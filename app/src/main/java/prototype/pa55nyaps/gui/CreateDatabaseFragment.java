@@ -8,24 +8,11 @@ import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.google.gson.FieldNamingPolicy;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.pa55nyaps.pa55nyaps.R;
 
-import org.json.JSONException;
-
-import java.io.File;
-import java.io.PrintStream;
-import java.text.DateFormat;
-
-import prototype.pa55nyaps.crypto.AESCryptosystem;
-import prototype.pa55nyaps.dataobjects.Ciphertext;
-import prototype.pa55nyaps.dataobjects.PasswordDatabase;
 import prototype.pa55nyaps.gui.model.PasswordDatabaseFile;
 
 /**
@@ -37,16 +24,6 @@ public class CreateDatabaseFragment extends DialogFragment {
     }
 
     DialogListener mListener;
-
-    public static Gson gson = new GsonBuilder()
-            .enableComplexMapKeySerialization()
-            .serializeNulls()
-            .setDateFormat(DateFormat.LONG)
-            .disableHtmlEscaping()
-            .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
-            .setPrettyPrinting()
-            .setVersion(1.0)
-            .create();
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {

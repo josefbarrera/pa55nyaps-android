@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.pa55nyaps.pa55nyaps.com.pa55.CreateDatabaseFragment">
+    tools:context="prototype.pa55nyaps.gui.CreateDatabaseFragment">
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"

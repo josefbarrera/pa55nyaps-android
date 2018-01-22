@@ -22,9 +22,11 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class StartScreen extends AppCompatActivity
-                         implements CreateDatabaseFragment.DialogListener {
+                         implements CreateDatabaseFragment.DialogListener, DeleteDatabaseFragment.DeleteDatabaseFragmentListener {
 
     File[] files;
+    ArrayList<HashMap<String, String>> filesList;
+    FileListingAdapter fileListingAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +78,7 @@ public class StartScreen extends AppCompatActivity
         Log.i("Debugging", "Clicked on edit");
     }
 
-    private void renderFileListing() {
+    public void renderFileListing() {
         String db_directory_name = getResources().getString(R.string.databases_directory);
         File databases_directory = new File(getBaseContext().getFilesDir(), db_directory_name);
         if (!databases_directory.isDirectory()) {
@@ -100,7 +102,7 @@ public class StartScreen extends AppCompatActivity
         // Hide the help text
         helpText.setVisibility(View.GONE);
 
-        ArrayList<HashMap<String, String>> filesList = new ArrayList<>();
+        this.filesList = new ArrayList<>();
         for (File file : files) {
             Date unformattedLastModified = new Date(file.lastModified());
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -113,18 +115,14 @@ public class StartScreen extends AppCompatActivity
         }
 
         // Add the file items to the list view and display it
-        FileListingAdapter adapter = new FileListingAdapter(filesList);
-        filesListing.setAdapter(adapter);
+        fileListingAdapter = new FileListingAdapter(filesList);
+        filesListing.setAdapter(fileListingAdapter);
         filesListing.setVisibility(View.VISIBLE);
+    }
 
-        // Handle clicks on the filesListing items
-//        filesListing.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                // was text clicked or the delete button? what's the right way of doing this?
-//            }
-//        });
-        // TODO call renderFileListing when a database is deleted
-
+    public void onDeleteDatabaseFragmentPositiveClick(DialogFragment dialog, int position) {
+        filesList.remove(position);
+        fileListingAdapter.notifyItemRemoved(position);
+        fileListingAdapter.notifyItemRangeChanged(position, fileListingAdapter.getItemCount());
     }
 }
